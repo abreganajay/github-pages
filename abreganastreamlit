@@ -1,0 +1,63 @@
+from PIL import Image
+import requests
+import streamlit as st 
+from streamlit_lottie import st_lottie
+
+# TAB NAME AND ICON 
+st.set_page_config(page_title="Abregana's Biography",
+page_icon=":volleyball:", layout="wide") 
+
+# LOTTIE ANIMATION
+def load_lottieurl(url):
+  r = requests.get(url)
+  if r.status_code != 200:
+      return None
+  return r.json()
+
+lottie_coding = "https://lottie.host/a774dec5-3fa5-431f-bbd8-
+603d9fa00ba8/CWRR2wpWn3.json"
+
+lottie_life =
+"https://lottie.host/c5fd277b-2ea1-4342-92cc-1a3bf22dbb33/iUKNfVzyjg.json"
+
+# IMAGE UPLOAD
+img_achievement = Image.open("blog/image/image.png")
+
+# INTRODUCTION
+with st.container():
+  st.write("---")
+  leftColumn, rightColumn = st.columns(2)
+
+with leftColumn:
+  st.subheader("Hi, I am Jayrald
+  st.title("A BSCpE student
+  st.write("I am a first-year student at Surigao del Norte State University 🙇 🙇 ") 
+  st.write("[My FB profile>](https://www.facebook.com/jayrald.abregana.7?mibextid=ZbWKwL)")
+
+with rightColumn:st_lottie(lottie_coding, height=300, key="coding")
+
+# MY LIFE 
+with st.container():
+  st.write("---")
+  left_column, right_column = st.columns(2)
+  with left_column:
+  st.header("My Life")
+  st.write("""My full name is Jayrald M. Abregana. I am 18 years old. I was born on February 17, 2006. I live in Purok 6, Brgy. Trinidad, Surigao City, with my family. I have a father and a mother, and I am the eldest among my siblings. My hobbies include playing volleyball and Mobile Legends. My dream is to excel academically and pursue a successful career in technology. """)
+  st.write("[I live here! >](https://maps.app.goo.gl/vzhobJaUvHoG74ys7)")
+   with right_column:st_lottie(lottie_life, height=300, key="life")
+   
+# MY ACHIEVEMENT
+with st.container(): 
+  st.write("---")
+  st.header("My Achievement")
+  st.write("##")
+  image_column, text_column = st.columns((1, 2))
+  with image_column: 
+   st.image(img_achievement)
+  with text_column:
+    st.subheader("With Honor Graduate")
+    st.write("""I graduated with honors from Cabregana Altres National High School. During my high school years, I strived for academic excellence and participated actively in extracurricular activities. """ ) 
+
+
+
+
